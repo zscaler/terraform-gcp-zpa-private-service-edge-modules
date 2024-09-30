@@ -4,7 +4,7 @@ This module creates a new Ubuntu Linux compute instance needed to deploy a publi
 
 By default, the example Terraform template will create a new dedicated subnet in the same Management VPC Network as the Service Edge(s). The instance will be assigned a dynamic/ephemeral public IP address with security controls permitting SSH (TCP/22) inbound access from the internet unless specified otherwise. This module is NOT required for production deployments and, if deployed, should have inbound access locked down ideally.
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -49,4 +49,4 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_public_ip"></a> [public\_ip](#output\_public\_ip) | Instance Public IP |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

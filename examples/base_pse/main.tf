@@ -40,7 +40,7 @@ module "network" {
   allowed_ports                  = var.allowed_ports
 
   subnet_bastion = var.subnet_bastion
-  subnet_pse      = var.subnet_pse
+  subnet_pse     = var.subnet_pse
 
   bastion_enabled = true
 }
@@ -65,8 +65,8 @@ module "bastion" {
 # 3. Create ZPA Service Edge Group
 ################################################################################
 module "zpa_service_edge_group" {
-  count                                        = var.byo_provisioning_key == true ? 0 : 1 # Only use this module if a new provisioning key is needed
-  source                                       = "../../modules/terraform-zpa-service-edge-group"
+  count                              = var.byo_provisioning_key == true ? 0 : 1 # Only use this module if a new provisioning key is needed
+  source                             = "../../modules/terraform-zpa-service-edge-group"
   pse_group_name                     = "${var.region}-${module.network.vpc_network_name}"
   pse_group_description              = "${var.pse_group_description}-${var.region}-${module.network.vpc_network_name}"
   pse_group_enabled                  = var.pse_group_enabled
@@ -237,16 +237,16 @@ locals {
 # Create Service Edge VM instances
 ################################################################################
 module "pse_vm" {
-  source              = "../../modules/terraform-zspse-vm-gcp"
-  name_prefix         = var.name_prefix
-  resource_tag        = random_string.suffix.result
-  project             = var.project
-  region              = var.region
-  zones               = local.zones_list
+  source               = "../../modules/terraform-zspse-vm-gcp"
+  name_prefix          = var.name_prefix
+  resource_tag         = random_string.suffix.result
+  project              = var.project
+  region               = var.region
+  zones                = local.zones_list
   psevm_instance_type  = var.psevm_instance_type
-  ssh_key             = tls_private_key.key.public_key_openssh
-  user_data           = var.use_zscaler_image == true ? local.pseuserdata : local.rhel9userdata
+  ssh_key              = tls_private_key.key.public_key_openssh
+  user_data            = var.use_zscaler_image == true ? local.pseuserdata : local.rhel9userdata
   pse_count            = var.pse_count
   psevm_vpc_subnetwork = module.network.pse_subnet
-  image_name          = var.image_name != "" ? var.image_name : local.image_selected
+  image_name           = var.image_name != "" ? var.image_name : local.image_selected
 }

@@ -10,7 +10,7 @@ Zscaler Service Edge runs on any supported ".rpm" based Linux Distro. Since ther
 Zscaler recommends deploying Service Edges via consistent/reusable templates with Compute Instances managed by Zonal Instance Groups. Zscaler does not currently support utilizing GCP specific features of Managed Instance Groups like Instance based Autohealing or Autoscaling with this deployment module.
 
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -45,13 +45,13 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_pse_count"></a> [ac\_count](#input\_ac\_count) | Default number of Service Edge appliances to create | `number` | `1` | no |
-| <a name="input_acvm_instance_type"></a> [acvm\_instance\_type](#input\_acvm\_instance\_type) | Service Edge Instance Type | `string` | `"n2-standard-4"` | no |
-| <a name="input_acvm_vpc_subnetwork"></a> [acvm\_vpc\_subnetwork](#input\_acvm\_vpc\_subnetwork) | VPC subnetwork for AC VM MGMT | `string` | n/a | yes |
 | <a name="input_disk_size"></a> [disk\_size](#input\_disk\_size) | The size of the image in gigabytes. If not specified, it will inherit the size of its base image | `string` | `"64"` | no |
 | <a name="input_image_name"></a> [image\_name](#input\_image\_name) | Custom image name to be used for deploying Service Edge appliances. Ideally all VMs should be on the same Image as templates always pull the latest from Google Marketplace. This variable is provided if a customer desires to override/retain an old ami for existing deployments rather than upgrading and forcing a replacement. It is also inputted as a list to facilitate if a customer desired to manually upgrade select ACs deployed based on the ac\_count index | `string` | `""` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | A prefix to associate to all the Service Edge module resources | `string` | `null` | no |
 | <a name="input_project"></a> [project](#input\_project) | Google Cloud project name | `string` | n/a | yes |
+| <a name="input_pse_count"></a> [pse\_count](#input\_pse\_count) | Default number of Service Edge appliances to create | `number` | `1` | no |
+| <a name="input_psevm_instance_type"></a> [psevm\_instance\_type](#input\_psevm\_instance\_type) | Service Edge Instance Type | `string` | `"n2-standard-4"` | no |
+| <a name="input_psevm_vpc_subnetwork"></a> [psevm\_vpc\_subnetwork](#input\_psevm\_vpc\_subnetwork) | VPC subnetwork for Service Edge VM MGMT | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | Google Cloud region | `string` | n/a | yes |
 | <a name="input_resource_tag"></a> [resource\_tag](#input\_resource\_tag) | A tag to associate to all the Service Edge module resources | `string` | `null` | no |
 | <a name="input_ssh_key"></a> [ssh\_key](#input\_ssh\_key) | A public key uploaded to the Service Edge instances | `string` | n/a | yes |
@@ -66,11 +66,11 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_pse_instance"></a> [ac\_instance](#output\_ac\_instance) | Service Edge VM name |
-| <a name="output_pse_private_ip"></a> [ac\_private\_ip](#output\_ac\_private\_ip) | Service Edge VM internal forwarding IP |
+| <a name="output_ac_instance"></a> [ac\_instance](#output\_ac\_instance) | Service Edge VM name |
+| <a name="output_ac_private_ip"></a> [ac\_private\_ip](#output\_ac\_private\_ip) | Service Edge VM internal forwarding IP |
 | <a name="output_instance_group_ids"></a> [instance\_group\_ids](#output\_instance\_group\_ids) | Name for Instance Groups |
 | <a name="output_instance_group_names"></a> [instance\_group\_names](#output\_instance\_group\_names) | Name for Instance Groups |
 | <a name="output_instance_group_zones"></a> [instance\_group\_zones](#output\_instance\_group\_zones) | GCP Zone assigmnents for Instance Groups |
 | <a name="output_instance_template_project"></a> [instance\_template\_project](#output\_instance\_template\_project) | GCP Project for Compute Instance Template and resource placement |
 | <a name="output_instance_template_region"></a> [instance\_template\_region](#output\_instance\_template\_region) | GCP Region for Compute Instance Template and resource placement |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

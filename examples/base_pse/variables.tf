@@ -138,12 +138,6 @@ variable "enrollment_cert" {
   }
 }
 
-variable "pse_group_name" {
-  type        = string
-  description = "Name of the Service Edge Group"
-  default     = ""
-}
-
 variable "pse_group_description" {
   type        = string
   description = "Optional: Description of the Service Edge Group"

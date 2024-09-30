@@ -57,15 +57,15 @@
 ## 5. GCP region where Service Edge resources will be deployed. This environment variable is automatically populated if running ZSEC script
 ##    and thus will override any value set here. Only uncomment and set this value if you are deploying terraform standalone.
 
-region                                     = "us-central1"
+region = "us-central1"
 
 ## 6. Path relative to terraform root directory where the service account json file exists for terraform to authenticate to Google Cloud
 
-credentials                                = "/Users/wguilherme/service-account-key.json"
+credentials = "/Users/wguilherme/service-account-key.json"
 
 ## 7. GCP Project ID to deploy/reference resources created
 
-project                                    = "tf-gcp-zpa-app-connector"
+project = "tf-gcp-zpa-app-connector"
 
 
 #####################################################################################################################
@@ -109,7 +109,7 @@ project                                    = "tf-gcp-zpa-app-connector"
 ## Example: Region is us-central1 with az_count set to 2. Terraform will create 1 Instance Group in us-central1-a and 1x Instance Group in us-central1-b
 ##          (or whatever first two zones report back as available)
 
-az_count                                   = 2
+az_count = 2
 
 
 ## Option B. If you require Instance Groups to be set explicitly in certain availability zones, you can override the region lookup and set the zones.
@@ -117,13 +117,13 @@ az_count                                   = 2
 ## Note: By setting zone names here, Terraform will ignore any value set for variable az_count. We also cannot verify the availability correct naming syntax
 ##       of the names set.
 
-zones                                      = ["us-central1-a","us-central1-b"]
+zones = ["us-central1-a", "us-central1-b"]
 
 ## 12. The number of Service Edge appliances to provision per Instance Group/Availability Zone.
 ##    (Default: varies per deployment type template)
 ##    E.g. pse_count set to 2 and var.az_count or var.zones set to 2 will create 2x Zonal Instance Groups with 2x target CCs in each Instance Group
 
-pse_count                                   = 2
+pse_count = 2
 
 ## 13. Custom image name to used for deploying Service Edge appliances. By default, Terraform will lookup the latest Red Hat Enterprise Linux 9 image version from the Google Marketplace.
 ##     This variable is provided if a customer desires to override/retain a specific image name/Instance Template version

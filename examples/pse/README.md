@@ -1,6 +1,6 @@
 # Zscaler "ac" deployment type
 
-This deployment type is intended for production/brownfield purposes. Full set of resources provisioned listed below, but by default this will effectively create all network infrastructure dependencies for a GCP environment. Creates 1 new "Management" VPC with 1 AC subnet and 1 bastion subnet; 1 Cloud Router + NAT Gateway; 1 Bastion Host assigned a dynamic public IP; generates local key pair .pem file for ssh access to all VMs. All network infrastructure resource have conditional "byo" variables, that can be inputted if they already exist (like VPC, subnet, Cloud Router, and Cloud NAT)<br>
+This deployment type is intended for production/brownfield purposes. Full set of resources provisioned listed below, but by default this will effectively create all network infrastructure dependencies for a GCP environment. Creates 1 new "Management" VPC with 1 PSE subnet and 1 bastion subnet; 1 Cloud Router + NAT Gateway; 1 Bastion Host assigned a dynamic public IP; generates local key pair .pem file for ssh access to all VMs. All network infrastructure resource have conditional "byo" variables, that can be inputted if they already exist (like VPC, subnet, Cloud Router, and Cloud NAT)<br>
 
 Additionally: Creates 1 Service Edge compute instance template + option to deploy multiple Service Edges across multiple zonal managed instance groups for highly available/resilient workload Zero Trust App Access.
 
@@ -8,8 +8,8 @@ Additionally: Creates 1 Service Edge compute instance template + option to deplo
 ## How to deploy:
 
 ### Option 1 (guided):
-From the examples directory, run the zsec bash script that walks to all required inputs.
-- ./zsec up
+From the examples directory, run the zspse bash script that walks to all required inputs.
+- ./zspse up
 - enter "greenfield"
 - enter "ac"
 - follow the remainder of the authentication and configuration input prompts.
@@ -20,18 +20,18 @@ From the examples directory, run the zsec bash script that walks to all required
 ### Option 2 (manual):
 Modify/populate any required variable input values in ac/terraform.tfvars file and save.
 
-From ac directory execute:
+From pse directory execute:
 - terraform init
 - terraform apply
 
 ## How to destroy:
 
 ### Option 1 (guided):
-From the examples directory, run the zsec bash script that walks to all required inputs.
-- ./zsec destroy
+From the examples directory, run the zspse bash script that walks to all required inputs.
+- ./zspse destroy
 
 ### Option 2 (manual):
-From ac directory execute:
+From pse directory execute:
 - terraform destroy
 
 <!-- BEGIN_TF_DOCS -->

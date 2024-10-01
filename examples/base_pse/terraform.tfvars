@@ -57,15 +57,15 @@
 ## 5. GCP region where Service Edge resources will be deployed. This environment variable is automatically populated if running ZSEC script
 ##    and thus will override any value set here. Only uncomment and set this value if you are deploying terraform standalone.
 
-region = "us-central1"
+#region                                     = "us-central1"
 
 ## 6. Path relative to terraform root directory where the service account json file exists for terraform to authenticate to Google Cloud
 
-credentials = "/Users/wguilherme/service-account-key.json"
+#credentials                                = "/tmp/pse-tf-service-account.json"
 
 ## 7. GCP Project ID to deploy/reference resources created
 
-project = "tf-gcp-zpa-app-connector"
+#project                                    = "pse-host-project"
 
 
 #####################################################################################################################

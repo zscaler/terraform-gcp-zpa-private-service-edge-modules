@@ -29,13 +29,13 @@ jobs:
           terraform validate -no-color
 
       - name: Terraform Init
-        id: init-zspse-acvm
+        id: init-zspse-vm
         run: |
           cd modules/terraform-zspse-vm-gcp
           terraform init   
 
       - name: Terraform Validate
-        id: validate-zspse-acvm
+        id: validate-zspse-vm
         run: |
           cd modules/terraform-zspse-vm-gcp
           terraform validate -no-color

@@ -16,7 +16,7 @@ Instance Group Names:
 ${join("\n", module.pse_vm.instance_group_names)}
 
 All Service Edge Instance IPs:
-${join("\n", module.pse_vm.ac_private_ip)}
+${join("\n", module.pse_vm.pse_private_ip)}
 TB
 }
 

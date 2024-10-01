@@ -14,7 +14,7 @@ examples/**/*.tfstate.*
 *.pem
 *.pub
 examples/.*rc*
-*zsacrc*
+*zspserc*
 **/bin/*
 user_data
 system-*.tar

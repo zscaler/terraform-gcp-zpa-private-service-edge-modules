@@ -1,6 +1,6 @@
 # Zscaler "base_ac" deployment type
 
-This deployment type is intended for greenfield/pov/lab purposes. It will deploy a fully functioning sandbox environment in a new VPC with a publicly accessible bastion host. Full set of resources provisioned listed below, but this will effectively create all network infrastructure dependencies for a GCP environment. Creates 1 new "Management" VPC with 1 AC subnet and 1 bastion subnet; 1 Cloud Router + NAT Gateway; 1 Bastion Host assigned a dynamic public IP; generates local key pair .pem file for ssh access to all VMs.<br>
+This deployment type is intended for greenfield/pov/lab purposes. It will deploy a fully functioning sandbox environment in a new VPC with a publicly accessible bastion host. Full set of resources provisioned listed below, but this will effectively create all network infrastructure dependencies for a GCP environment. Creates 1 new "Management" VPC with 1 PSE subnet and 1 bastion subnet; 1 Cloud Router + NAT Gateway; 1 Bastion Host assigned a dynamic public IP; generates local key pair .pem file for ssh access to all VMs.<br>
 
 Additionally: Creates 1 Service Edge compute instance template + option to deploy multiple Service Edges across multiple zonal managed instance groups for highly available/resilient workload Zero Trust App Access.
 
@@ -8,8 +8,8 @@ Additionally: Creates 1 Service Edge compute instance template + option to deplo
 ## How to deploy:
 
 ### Option 1 (guided):
-From the examples directory, run the zsec bash script that walks to all required inputs.
-- ./zsec up
+From the examples directory, run the zspse bash script that walks to all required inputs.
+- ./zspse up
 - enter "greenfield"
 - enter "base_ac"
 - follow the remainder of the authentication and configuration input prompts.
@@ -18,20 +18,20 @@ From the examples directory, run the zsec bash script that walks to all required
 - verify all resources that will be created/modified and enter "yes" to confirm
 
 ### Option 2 (manual):
-Modify/populate any required variable input values in base_ac/terraform.tfvars file and save.
+Modify/populate any required variable input values in base_pse/terraform.tfvars file and save.
 
-From base_ac directory execute:
+From base_pse directory execute:
 - terraform init
 - terraform apply
 
 ## How to destroy:
 
 ### Option 1 (guided):
-From the examples directory, run the zsec bash script that walks to all required inputs.
-- ./zsec destroy
+From the examples directory, run the zspse bash script that walks to all required inputs.
+- ./zspse destroy
 
 ### Option 2 (manual):
-From base_ac directory execute:
+From base_pse directory execute:
 - terraform destroy
 
 <!-- BEGIN_TF_DOCS -->
@@ -91,7 +91,7 @@ From base_ac directory execute:
 | <a name="input_byo_provisioning_key_name"></a> [byo\_provisioning\_key\_name](#input\_byo\_provisioning\_key\_name) | Existing Service Edge Provisioning Key name | `string` | `"provisioning-key-tf"` | no |
 | <a name="input_credentials"></a> [credentials](#input\_credentials) | Path to the service account json file for terraform to authenticate to Google Cloud | `string` | n/a | yes |
 | <a name="input_enrollment_cert"></a> [enrollment\_cert](#input\_enrollment\_cert) | Get name of ZPA enrollment cert to be used for Service Edge provisioning | `string` | `"Service Edge"` | no |
-| <a name="input_image_name"></a> [image\_name](#input\_image\_name) | Custom image name to be used for deploying Service Edge appliances. Ideally all VMs should be on the same Image as templates always pull the latest from Google Marketplace. This variable is provided if a customer desires to override/retain an old image for existing deployments rather than upgrading and forcing a replacement. It is also inputted as a list to facilitate if a customer desired to manually upgrade select ACs deployed based on the ac\_count index | `string` | `""` | no |
+| <a name="input_image_name"></a> [image\_name](#input\_image\_name) | Custom image name to be used for deploying Service Edge appliances. Ideally all VMs should be on the same Image as templates always pull the latest from Google Marketplace. This variable is provided if a customer desires to override/retain an old image for existing deployments rather than upgrading and forcing a replacement. It is also inputted as a list to facilitate if a customer desired to manually upgrade select PSEs deployed based on the pse\_count index | `string` | `""` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | The name prefix for all your resources | `string` | `"zspse"` | no |
 | <a name="input_project"></a> [project](#input\_project) | Google Cloud project name | `string` | n/a | yes |
 | <a name="input_provisioning_key_association_type"></a> [provisioning\_key\_association\_type](#input\_provisioning\_key\_association\_type) | Specifies the provisioning key type for Service Edges or ZPA Private Service Edges. The supported values are SERVICE\_EDGE\_GRP and SERVICE\_EDGE\_GRP | `string` | `"SERVICE_EDGE_GRP"` | no |

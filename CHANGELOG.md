@@ -7,4 +7,4 @@ All notable changes to this project will be documented in this file.
 
 ### Features
 
-[PR #1](https://github.com/zscaler/zscaler-sdk-go/pull/1) - Initial GCP ZPA Private Service Edge Terraform module
+[PR #1](https://github.com/zscaler/terraform-gcp-zpa-private-service-edge-modules/pull/1) - Initial GCP ZPA Private Service Edge Terraform module

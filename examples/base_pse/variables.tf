@@ -102,7 +102,7 @@ variable "zones" {
 
 variable "image_name" {
   type        = string
-  description = "Custom image name to be used for deploying Service Edge appliances. Ideally all VMs should be on the same Image as templates always pull the latest from Google Marketplace. This variable is provided if a customer desires to override/retain an old image for existing deployments rather than upgrading and forcing a replacement. It is also inputted as a list to facilitate if a customer desired to manually upgrade select ACs deployed based on the ac_count index"
+  description = "Custom image name to be used for deploying Service Edge appliances. Ideally all VMs should be on the same Image as templates always pull the latest from Google Marketplace. This variable is provided if a customer desires to override/retain an old image for existing deployments rather than upgrading and forcing a replacement. It is also inputted as a list to facilitate if a customer desired to manually upgrade select PSEs deployed based on the pse_count index"
   default     = ""
 }
 
@@ -136,12 +136,6 @@ variable "enrollment_cert" {
     )
     error_message = "Input enrollment_cert must be set to an approved value."
   }
-}
-
-variable "pse_group_name" {
-  type        = string
-  description = "Name of the Service Edge Group"
-  default     = ""
 }
 
 variable "pse_group_description" {

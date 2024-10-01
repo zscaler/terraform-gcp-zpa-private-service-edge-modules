@@ -8,10 +8,10 @@ scp -i ${var.name_prefix}-key-${random_string.suffix.result}.pem ${var.name_pref
 ssh -i ${var.name_prefix}-key-${random_string.suffix.result}.pem ubuntu@${module.bastion.public_ip}
 
 3) SSH to the AC
-ssh -i ${var.name_prefix}-key-${random_string.suffix.result}.pem admin@${module.pse_vm.ac_private_ip[0]} -o "proxycommand ssh -W %h:%p -i ${var.name_prefix}-key-${random_string.suffix.result}.pem ubuntu@${module.bastion.public_ip}"
+ssh -i ${var.name_prefix}-key-${random_string.suffix.result}.pem admin@${module.pse_vm.pse_private_ip[0]} -o "proxycommand ssh -W %h:%p -i ${var.name_prefix}-key-${random_string.suffix.result}.pem ubuntu@${module.bastion.public_ip}"
 
 All Service Edge Instance IPs:
-${join("\n", module.pse_vm.ac_private_ip)}
+${join("\n", module.pse_vm.pse_private_ip)}
 
 
 GCP Project Name:

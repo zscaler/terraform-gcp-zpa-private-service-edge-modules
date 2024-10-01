@@ -1,4 +1,4 @@
-output "ac_private_ip" {
+output "pse_private_ip" {
   description = "Service Edge VM internal forwarding IP"
   value       = data.google_compute_instance.pse_vm_instances[*].network_interface[0].network_ip
 }
@@ -28,7 +28,7 @@ output "instance_template_project" {
   value       = google_compute_instance_template.pse_instance_template.project
 }
 
-output "ac_instance" {
+output "pse_instance" {
   description = "Service Edge VM name"
   value       = data.google_compute_instance.pse_vm_instances[*].self_link
 }

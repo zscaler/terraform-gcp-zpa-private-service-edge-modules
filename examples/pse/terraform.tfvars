@@ -61,11 +61,11 @@
 
 ## 6. Path relative to terraform root directory where the service account json file exists for terraform to authenticate to Google Cloud
 
-#credentials                                = "/tmp/ac-tf-service-account.json"
+#credentials                                = "/tmp/pse-tf-service-account.json"
 
 ## 7. GCP Project ID to deploy/reference resources created
 
-#project                                    = "ac-host-project"
+#project                                    = "pse-host-project"
 
 
 #####################################################################################################################
@@ -77,17 +77,17 @@
 
 #name_prefix                                = "zspse"
 
-## 9. Service Edge GCP Compute Instance size selection. Uncomment acvm_instance_type line with desired vm size to change.
+## 9. Service Edge GCP Compute Instance size selection. Uncomment psevm_instance_type line with desired vm size to change.
 ##    (Default: n2-standard-4)
 
-#acvm_instance_type                         = "n2-standard-4"
-#acvm_instance_type                         = "n2-highcpu-4"
-#acvm_instance_type                         = "n2-standard-8"
-#acvm_instance_type                         = "n2-highcpu-8"
-#acvm_instance_type                         = "n1-standard-4"
-#acvm_instance_type                         = "n1-highcpu-4"
-#acvm_instance_type                         = "n1-standard-8"
-#acvm_instance_type                         = "n1-highcpu-8"
+#psevm_instance_type                         = "n2-standard-4"
+#psevm_instance_type                         = "n2-highcpu-4"
+#psevm_instance_type                         = "n2-standard-8"
+#psevm_instance_type                         = "n2-highcpu-8"
+#psevm_instance_type                         = "n1-standard-4"
+#psevm_instance_type                         = "n1-highcpu-4"
+#psevm_instance_type                         = "n1-standard-8"
+#psevm_instance_type                         = "n1-highcpu-8"
 
 ## 10. Network Configuration:
 ##    Subnet space. (Minimum /28 required. Uncomment and modify if byo_vpc is set to true but byo_subnets is left false meaning you want terraform to create 
@@ -95,10 +95,10 @@
 
 ## Note: These Greenfield templates that include a test workload and bastion host will create a total of two VPC Networks in the same Project ID. Putting
 ##       Host/Services and Applications in the same Project is generally not a GCP recommended best practice. For simplicity, we will create a "Management"
-##       VPC consisting of the public bastion VM (subnet_bastion) and the Service Edge Mgmt NIC (subnet_ac).
+##       VPC consisting of the public bastion VM (subnet_bastion) and the Service Edge Mgmt NIC (subnet_pse).
 
 #subnet_bastion                             = "10.0.0.0/24"
-#subnet_ac                                  = "10.0.1.0/24"
+#subnet_pse                                 = "10.0.1.0/24"
 
 ## 11. Availabilty Zone resiliency configuration:
 
@@ -121,16 +121,16 @@
 
 ## 12. The number of Service Edge appliances to provision per Instance Group/Availability Zone.
 ##    (Default: varies per deployment type template)
-##    E.g. ac_count set to 2 and var.az_count or var.zones set to 2 will create 2x Zonal Instance Groups with 2x target CCs in each Instance Group
+##    E.g. pse_count set to 2 and var.az_count or var.zones set to 2 will create 2x Zonal Instance Groups with 2x target CCs in each Instance Group
 
-#ac_count                                   = 1
+#pse_count                                  = 1
 
 ## 13. Custom image name to used for deploying Service Edge appliances. By default, Terraform will lookup the latest Red Hat Enterprise Linux 9 image version from the Google Marketplace.
 ##     This variable is provided if a customer desires to override/retain a specific image name/Instance Template version
 
 ## Note: It is NOT RECOMMENDED to statically set AC image versions. Zscaler recommends always running/deploying the latest version template
 
-# use_zscaler_image = true
+# use_zscaler_image                         = true
 
 
 #####################################################################################################################

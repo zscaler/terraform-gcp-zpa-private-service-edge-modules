@@ -16,19 +16,19 @@ This repository contains various modules and deployment configurations that can 
 
 These deployment templates are intended to be fully functional and self service for both greenfield/pov as well as production use. All modules may also be utilized as design recommendation based on Zscaler's Official [Zero Trust Access to Private Apps in GCP with ZPA](https://www.zscaler.com/resources/reference-architecture/zero-trust-with-zpa.pdf).
 
-~> **IMPORTANT** As of version 1.1.0 of this module, all Service Edges are deployed using the new [Red Hat Enterprise Linux 9](https://help.zscaler.com/zpa/zpa-private-service-edge-red-hat-enterprise-linux-9-migration)
+~> **IMPORTANT** As of version 1.0.0 of this module, all Service Edges are deployed using the new [Red Hat Enterprise Linux 9](https://help.zscaler.com/zpa/zpa-private-service-edge-red-hat-enterprise-linux-9-migration)
 
 ## **Prerequisites**
 
 The GCP Terraform scripts leverage Terraform v1.1.9 which includes full binary and provider support for macOS M1 chips, but any Terraform
 version 0.13.7 should be generally supported.
 
--   provider registry.terraform.io/hashicorp/google v5.38.x
+-   provider registry.terraform.io/hashicorp/google v6.4.x
 -   provider registry.terraform.io/hashicorp/random v3.6.x
 -   provider registry.terraform.io/hashicorp/local v2.5.x
 -   provider registry.terraform.io/hashicorp/null v3.2.x
 -   provider registry.terraform.io/providers/hashicorp/tls v4.0.x
--   provider registry.terraform.io/providers/zscaler/zpa v3.31.x
+-   provider registry.terraform.io/providers/zscaler/zpa v3.33.x
 
 ### **GCP requirements**
 
@@ -44,12 +44,12 @@ This module leverages the Zscaler Private Access [ZPA Terraform Provider](https:
 - Client ID
 - Client Secret
 - Customer ID
-3. (Optional) An existing App Service Edge Group and Provisioning Key. Otherwise, you can follow the prompts in the examples terraform.tfvars to create a new Service Edge Group and Provisioning Key
+3. (Optional) An existing Service Edge Group and Provisioning Key. Otherwise, you can follow the prompts in the examples terraform.tfvars to create a new Service Edge Group and Provisioning Key
 
 See: [Zscaler Service Edge Deployment for Linux](https://help.zscaler.com/zpa/private-service-edge-deployment-guide-linux) for additional prerequisite provisioning steps.
 
 ### **Terraform client requirements**
-If executing Terraform via the "zsec" wrapper bash script, it is advised that you run from a MacOS or Linux workstation. Minimum installed application requirements to successfully from the script are:
+If executing Terraform via the "zspse" wrapper bash script, it is advised that you run from a MacOS or Linux workstation. Minimum installed application requirements to successfully from the script are:
 - bash
 - curl
 - unzip

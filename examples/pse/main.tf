@@ -38,7 +38,7 @@ module "network" {
   region                         = var.region
   allowed_ssh_from_internal_cidr = [var.subnet_bastion]
   allowed_ports                  = var.allowed_ports
-  subnet_pse                      = var.subnet_pse
+  subnet_pse                     = var.subnet_pse
 
   byo_vpc      = var.byo_vpc
   byo_vpc_name = var.byo_vpc_name
@@ -232,16 +232,16 @@ locals {
 # Create Service Edge VM instances
 ################################################################################
 module "pse_vm" {
-  source              = "../../modules/terraform-zspse-vm-gcp"
-  name_prefix         = var.name_prefix
-  resource_tag        = random_string.suffix.result
-  project             = var.project
-  region              = var.region
-  zones               = local.zones_list
+  source               = "../../modules/terraform-zspse-vm-gcp"
+  name_prefix          = var.name_prefix
+  resource_tag         = random_string.suffix.result
+  project              = var.project
+  region               = var.region
+  zones                = local.zones_list
   psevm_instance_type  = var.psevm_instance_type
-  ssh_key             = tls_private_key.key.public_key_openssh
-  user_data           = var.use_zscaler_image == true ? local.pseuserdata : local.rhel9userdata
+  ssh_key              = tls_private_key.key.public_key_openssh
+  user_data            = var.use_zscaler_image == true ? local.pseuserdata : local.rhel9userdata
   pse_count            = var.pse_count
   psevm_vpc_subnetwork = module.network.pse_subnet
-  image_name          = var.image_name != "" ? var.image_name : local.image_selected
+  image_name           = var.image_name != "" ? var.image_name : local.image_selected
 }
